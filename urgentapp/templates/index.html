@@ -4,6 +4,23 @@
 
 {% block content %}
 
-<h1>Hello World</h1>
+<h1>Unit Locations</h1>
+
+    {% if unit_list %}
+
+        {% for unit in unit_list  %}
+
+            <p>
+                {{ unit.unit_name }}
+                {{ unit.position }}
+
+            </p>
+
+
+
+        {% endfor %}
+
+
+    {% endif %}
 
 {% endblock %}

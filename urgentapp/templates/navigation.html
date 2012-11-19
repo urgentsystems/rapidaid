@@ -1,17 +1,12 @@
-{% load url from future %}
 
-<div id="topbar">
-    <div class="navbar">
-        <div class="navbar-side navbar-left"></div>
-        <div class="navbar-content">
             {% if user.is_authenticated %}
 
-                <a href="{{% url 'django.contrib.auth.views.logout' %}">Logout</a>
+                <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+
             {% else %}
-                <a href="{% url 'django.contrib.auth.views.login' %}">Login</a>
+
+                <p>Welcome, new user. Please log in.</p>
+
+                {{ user.username }}
 
             {% endif %}
-        </div>
-        <div class="navbar-side navbar-right"></div>
-    </div>
-</div>
