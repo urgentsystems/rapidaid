@@ -180,6 +180,9 @@ STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
 
 try:
     from local_settings import *
