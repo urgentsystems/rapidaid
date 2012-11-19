@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'south',
     'urgentapp',
+    'geoposition'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -154,6 +155,7 @@ LOGGING = {
         },
     }
 }
+
 
 
 try:
