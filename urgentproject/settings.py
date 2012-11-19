@@ -181,7 +181,8 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 try:
     import dj_database_url
-    DATABASES['default'] =  dj_database_url.config()
+    if dj_database_url.config():
+        DATABASES['default'] =  dj_database_url.config()
 except ImportError:
     pass
 
