@@ -179,10 +179,11 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
-
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-
+try:
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
+except ImportError:
+    pass
 
 try:
     from local_settings import *
