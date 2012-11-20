@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+    <name>test</name>
+    <description><![CDATA[testing stuff]]></description>{% if unit_list %}{% for unit in unit_list  %}
+    <Style id="style{{ unit.unit_name }}">
+        <IconStyle>
+            <Icon>
+                <href>http://robohash.org/{{ unit.unit_name }}.png?set=set3/&amp;size=150x150</href>
+            </Icon>
+        </IconStyle>
+    </Style>{% endfor %}{% endif %}{% if unit_list %}{% for unit in unit_list  %}
+    <Placemark>
+        <name>{{ unit.unit_name }}</name>
+        <description><![CDATA[]]></description>
+        <styleUrl>#style{{ unit.unit_name }}</styleUrl>
+        <Point>
+            <coordinates>{{ unit.position.longitude }},{{ unit.position.latitude }}</coordinates>
+        </Point>
+    </Placemark>{% endfor %}{% endif %}
+</Document>
+</kml>
