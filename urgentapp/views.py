@@ -15,3 +15,12 @@ def index(request):
         })
 
     return render_to_response('index.html',c)
+
+@login_required
+def get_units(request):
+    unit_list = Unit.objects.all()
+    c = RequestContext(request, {
+        'unit_list' : unit_list,
+        })
+
+    return render_to_response('xml/units.xml',c)

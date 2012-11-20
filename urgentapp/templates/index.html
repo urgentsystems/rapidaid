@@ -2,46 +2,16 @@
 
 
 
+
 {% block content %}
 
-    <script>
-        function mapmap() {
-            var myLatlng = new google.maps.LatLng(32.82666337748734,-83.61316680908203);
-
-            var mapOptions = {
-                zoom: 15,
-                center: myLatlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-            var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
 
+    <div id="map_canvas"></div>
+
+    <div id="map"></div>
 
 
-    {% if unit_list %}
-
-        {% for unit in unit_list  %}
-
-            var location{{ unit.unit_name }} = new google.maps.LatLng({{ unit.position }});
-
-            var marker{{ unit.unit_name }} = new google.maps.Marker({
-                position: location{{ unit.unit_name }},
-                map: map,
-                title: '{{ unit.unit_name }}'
-            });
-
-
-
-
-
-        {% endfor %}
-
-
-    {% endif %}
-
-
-
-        }
-    </script>
+    <div id="OptionMenu"></div>
 
 {% endblock %}

@@ -139,7 +139,8 @@ INSTALLED_APPS = (
     'south',
     'urgentapp',
     'gunicorn',
-    'geoposition'
+    'geoposition',
+    'django_gravatar',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -170,6 +171,14 @@ LOGGING = {
         },
     }
 }
+
+#Gravatar Settings
+
+GRAVATAR_DEFAULT_IMAGE = 'monsterid'
+
+##################
+
+
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'urgentapp.views.index'),
+    url(r'^units.kml', 'urgentapp.views.get_units'),
     # url(r'^urgentproject/', include('urgentproject.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
