@@ -4,17 +4,33 @@
 
 {% block content %}
 
-<h1>Unit Locations</h1>
+    <script>
+        function mapmap() {
+            var myLatlng = new google.maps.LatLng(32.82666337748734,-83.61316680908203);
+
+            var mapOptions = {
+                zoom: 15,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+
+
 
     {% if unit_list %}
 
         {% for unit in unit_list  %}
 
-            <p>
-                {{ unit.unit_name }}
-                {{ unit.position }}
+            var location{{ unit.unit_name }} = new google.maps.LatLng({{ unit.position }});
 
-            </p>
+            var marker{{ unit.unit_name }} = new google.maps.Marker({
+                position: location{{ unit.unit_name }},
+                map: map,
+                title: '{{ unit.unit_name }}'
+            });
+
+
 
 
 
@@ -22,5 +38,10 @@
 
 
     {% endif %}
+
+
+
+        }
+    </script>
 
 {% endblock %}

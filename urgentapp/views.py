@@ -1,16 +1,17 @@
 # Create your views here.
 
-from django.template import Context, loader
+from django.template import Context, loader, RequestContext
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render_to_response
 
 from urgentapp.models import Unit
 
 @login_required
 def index(request):
     unit_list = Unit.objects.all()
-    t = loader.get_template('index.html')
-    c = Context({
+    c = RequestContext(request, {
         'unit_list' : unit_list,
-    })
-    return HttpResponse(t.render(c))
+        })
+
+    return render_to_response('index.html',c)
