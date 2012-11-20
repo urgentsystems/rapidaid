@@ -5,6 +5,7 @@ boto==2.6.0
 dj-database-url==0.2.1
 django-boto==0.1.6b
 django-geoposition==0.1.4
+django-gravatar2==1.0.6
 django-social-auth==0.7.10
 django-storages==1.1.5
 docutils==0.9.1
