@@ -21,4 +21,4 @@ def index(request):
 def get_units(request):
     unit_list = Unit.objects.all()
 
-    return render_to_kml('xml/units.xml', {'unit_list':unit_list})
+    return render_to_kml('xml/units.kml', {'unit_list':unit_list})
