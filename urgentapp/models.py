@@ -37,15 +37,15 @@ class Person(models.Model):
     def __unicode__(self):
         return self.name
 
+class Case(models.Model):
+    assigned_unit = models.ForeignKey(Unit)
+
 
 class Incident(models.Model):
     DateTime = models.DateTimeField(auto_now_add=True)
     Case = models.ForeignKey(Case)
     assigned_unit = models.ForeignKey(Unit)
 
-
-class Case(models.Model):
-    assigned_unit = models.ForeignKey(Unit)
 
 class PhoneNumber(models.Model):
     area_code = models.PositiveSmallIntegerField()
