@@ -25,5 +25,3 @@ class Need(models.Model):
     def __unicode__(self):
         return self.short_description
 
-
-

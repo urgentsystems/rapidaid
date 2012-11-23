@@ -8,6 +8,8 @@ from django.contrib.gis.shortcuts import render_to_kml
 
 from urgentapp.models import Unit
 
+
+
 @login_required
 def index(request):
     unit_list = Unit.objects.all()
@@ -16,6 +18,9 @@ def index(request):
         })
 
     return render_to_response('index.html',c)
+
+
+
 
 @login_required
 def get_units(request):
