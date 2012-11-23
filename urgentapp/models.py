@@ -25,3 +25,33 @@ class Need(models.Model):
     def __unicode__(self):
         return self.short_description
 
+
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200, default="Doe")
+
+    class Meta:
+        verbose_name_plural = "people"
+
+    def __unicode__(self):
+        return self.name
+
+
+class Incident(models.Model):
+    DateTime = models.DateTimeField(auto_now_add=True)
+    Case = models.ForeignKey(Case)
+    assigned_unit = models.ForeignKey(Unit)
+
+
+class Case(models.Model):
+    assigned_unit = models.ForeignKey(Unit)
+
+class PhoneNumber(models.Model):
+    area_code = models.PositiveSmallIntegerField()
+    prefix = models.PositiveSmallIntegerField()
+    number = models.PositiveSmallIntegerField()
+
+class Phone_To_Person(models.Model):
+    person = models.ForeignKey(Person)
+    Phone = models.ForeignKey(PhoneNumber)
