@@ -5,4 +5,4 @@ from urgentapp import models
 class UnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Unit
-        fields = ('id', 'position')
+        fields = ('id','unit_name', 'position')
