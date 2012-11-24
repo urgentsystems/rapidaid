@@ -42,17 +42,7 @@
             }
         }
 
-        // Updates all markers
-        function updateOverlays(){
-            if (markersArray) {
-                for (i in markersArray) {
-                    markersArray[i].position =
-                }
-                markersArray.length = 0;
-            }
 
-
-        }
 
         function getUnitData(UnitID){
             $.getJSON('/api/units/' + UnitID, function(data) {
@@ -107,6 +97,7 @@
                 deleteOverlays();
                 mapUnits();
             });
+
 
 
 
