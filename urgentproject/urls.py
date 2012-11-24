@@ -22,6 +22,12 @@ urlpatterns = patterns('',
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
 
 
+    url(r'^api/', include('urgentapp.urls')),
+
+
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+
+
 )
 
 
