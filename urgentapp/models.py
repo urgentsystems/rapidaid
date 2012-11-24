@@ -14,7 +14,6 @@ class Unit(models.Model):
         return self.unit_name
 
 
-
 class Need(models.Model):
     short_description = models.CharField(max_length=200, default="Empty")
     description = models.TextField()
@@ -37,6 +36,7 @@ class Person(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Case(models.Model):
     assigned_unit = models.ForeignKey(Unit)
 
@@ -46,12 +46,22 @@ class Incident(models.Model):
     Case = models.ForeignKey(Case)
     assigned_unit = models.ForeignKey(Unit)
 
+class People_To_Incidents(models.Model):
+    Incident = models.ForeignKey(Incident)
+    Person = models.ForeignKey(Person)
+
 
 class PhoneNumber(models.Model):
     area_code = models.PositiveSmallIntegerField()
     prefix = models.PositiveSmallIntegerField()
     number = models.PositiveSmallIntegerField()
 
+
 class Phone_To_Person(models.Model):
-    person = models.ForeignKey(Person)
+    Person = models.ForeignKey(Person)
+    Phone = models.ForeignKey(PhoneNumber)
+
+
+class Phone_To_Unit(models.Model):
+    Unit = models.ForeignKey(Unit)
     Phone = models.ForeignKey(PhoneNumber)
