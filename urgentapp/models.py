@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 class Unit(models.Model):
     unit_name = models.CharField(max_length=200)
-    user = models.ForeignKey(User,null=True, blank=True)
+    user = models.ForeignKey(User,null=True, blank=True, related_name='unit')
     position = GeopositionField(default="32.82074903230932,-83.64166265624999")
 
     def __unicode__(self):

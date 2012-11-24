@@ -6,8 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.contrib.gis.shortcuts import render_to_kml
 from rest_framework import generics
+from django.contrib.auth.models import User
 
-from urgentapp.serializers import UnitSerializer
+from urgentapp.serializers import UnitSerializer, UserSerializer
 from urgentapp.models import Unit
 
 
@@ -40,3 +41,12 @@ class UnitList(generics.ListCreateAPIView):
 class UnitDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Unit
     serializer_class = UnitSerializer
+
+
+class UserList(generics.ListAPIView):
+    model = User
+    serializer_class = UserSerializer
+
+class UserInstance(generics.RetrieveAPIView):
+    model = User
+    serializer_class = UserSerializer

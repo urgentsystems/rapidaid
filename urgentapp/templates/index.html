@@ -14,4 +14,113 @@
 
     <div id="OptionMenu"></div>
 
+
+    <script>
+
+        var map;
+        var markersArray = [];
+
+
+
+        function addMarker(location, image, title) {
+            marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title:title,
+                icon: image
+            });
+            markersArray.push(marker);
+        }
+
+        // Deletes all markers in the array by removing references to them
+        function deleteOverlays() {
+            if (markersArray) {
+                for (i in markersArray) {
+                    markersArray[i].setMap(null);
+                }
+                markersArray.length = 0;
+            }
+        }
+
+        // Updates all markers
+        function updateOverlays(){
+            if (markersArray) {
+                for (i in markersArray) {
+                    markersArray[i].position =
+                }
+                markersArray.length = 0;
+            }
+
+
+        }
+
+        function getUnitData(UnitID){
+            $.getJSON('/api/units/' + UnitID, function(data) {
+
+
+
+            });
+
+        }
+
+
+        function mapUnits(){
+            $.getJSON('/api/units/', function(data) {
+
+
+                $.each(data, function(key, val) {
+
+
+
+                    var location = val.position.split(",");
+                    var image = 'http://robohash.org/' + val.unit_name + '.png?set=set3&size=100x100';
+                    var myLatlng = new google.maps.LatLng(parseFloat(location[0]),parseFloat(location[1]));
+
+                    addMarker(myLatlng, image, val.unit_name, val.id)
+
+
+
+                });
+
+
+            });
+
+        }
+
+
+        $(document).ready(function() {
+
+
+            var macon = new google.maps.LatLng(32.834722, -83.651667);
+            var mapOptions = {
+                center: macon,
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            mapUnits();
+
+
+            $("#UnitRefresh").click(function() {
+                //alert("Handler for .click() called.");
+                deleteOverlays();
+                mapUnits();
+            });
+
+
+            window.setInterval(function(){
+                deleteOverlays();
+                mapUnits();
+            }, 1000);
+
+
+        });
+
+
+    </script>
+
+
+    <button type="button" class="btn btn-info" id="UnitRefresh">Info</button>
+
 {% endblock %}
